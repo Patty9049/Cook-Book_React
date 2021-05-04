@@ -1,0 +1,19 @@
+@import "../../mixins/mixins.module.scss";
+
+form {
+  margin: 10px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  @include btn;
+  &:hover {
+    @include hover;
+  }
+}
+
+.title {
+  @include title;
+}

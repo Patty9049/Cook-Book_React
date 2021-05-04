@@ -1,0 +1,18 @@
+@import "./mixins/mixins.module.scss";
+
+* {
+  font-family: Noto Sans JP, sans-serif;
+  margin: 10px;
+}
+
+.title {
+  @include title;
+
+  span {
+    color: $main-intensered;
+  }
+}
+
+.icon {
+  font-size: xx-large;
+}

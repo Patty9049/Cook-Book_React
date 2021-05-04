@@ -1,0 +1,33 @@
+$main-red: #ea2027;
+$main-intensered: #ee5a24;
+$main-green: #44bd32;
+$main-lightgreen: #c4e538;
+
+@mixin btn {
+  padding: 8px;
+  border: none;
+  width: 80%;
+  height: 20%;
+  background: $main-lightgreen;
+  opacity: 0.6;
+  cursor: pointer;
+  outline: none;
+  border-radius: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  font-size: normal;
+  font-weight: normal;
+  box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+    6px 6px 10px rgba(0, 0, 0, 0.2);
+  color: #313131;
+}
+
+@mixin hover {
+  opacity: 0.9;
+}
+
+@mixin title {
+  font-family: Roboto, sans-serif;
+  color: $main-green;
+}
