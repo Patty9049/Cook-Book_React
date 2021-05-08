@@ -17,3 +17,7 @@ form {
 .title {
   @include title;
 }
+
+input {
+  @include input;
+}

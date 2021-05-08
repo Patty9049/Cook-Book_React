@@ -4,6 +4,8 @@ import axios from "axios";
 import RecipeSearchForm from "./components/RecipeSearchForm/RecipeSearchForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
+import RecipeList from "./components/RecipeList/RecipeList";
+import Router from "./routing/Router";
 
 class App extends Component {
   state = {
@@ -43,11 +45,16 @@ class App extends Component {
             <FontAwesomeIcon
               className={styles.icon}
               icon={faUtensils}
-            /> Recipe{" "}
+            /> Cook{" "}
           </span>{" "}
-          App
+          Book
         </h1>
-        <RecipeSearchForm getRecipes={this.getRecipes} />
+
+        <Router
+          recipes={this.state.recipes}
+          baseImgUrl={this.state.baseImgUrl}
+          getRecipes={this.getRecipes}
+        />
       </div>
     );
   }

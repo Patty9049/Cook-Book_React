@@ -31,3 +31,12 @@ $main-lightgreen: #c4e538;
   font-family: Roboto, sans-serif;
   color: $main-green;
 }
+
+@mixin input {
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid $main-green;
+  &:focus-visible {
+    outline: green;
+  }
+}
