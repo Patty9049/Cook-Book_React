@@ -1,11 +1,33 @@
 import React from "react";
+import SearchAppBar from "../components/AppBar/AppBar";
 import RecipeList from "../components/RecipeList/RecipeList";
-import RecipeSearchForm from "../components/RecipeSearchForm/RecipeSearchForm";
+import axios from "axios";
+import BurgerMenu from "../components/BurgerMenu/BurgerMenu";
 
 const Home = ({ recipes, baseImgUrl, getRecipes }) => {
+  getRecipes = (e) => {
+    e.preventDefault();
+
+    const recipeName = e.target.recipeName.value;
+    const recipeNumber = e.target.recipeNumber.value;
+
+    axios
+      .get(
+        `https://api.spoonacular.com/recipes/search?apiKey=${process.env.REACT_APP_API_KEY}&query=${recipeName}&number=${recipeNumber}`
+      )
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          recipes: res.data.results,
+          baseImgUrl: res.data.baseUri,
+        });
+      })
+      .catch((err) => console.log(err));
+
+    e.target.reset();
+  };
   return (
     <div>
-      <RecipeSearchForm getRecipes={getRecipes} />
       <RecipeList
         recipes={recipes}
         baseImgUrl={baseImgUrl}

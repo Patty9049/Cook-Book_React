@@ -2,18 +2,10 @@
 
 * {
   font-family: Noto Sans JP, sans-serif;
-  margin: 10px;
+  // margin: 6px;
 }
 
-.title {
-  @include title;
-
-  span {
-    color: $main-intensered;
-  }
-}
-
-.icon {
-  font-size: xx-large;
-  margin: 0px;
+.header {
+  color: white;
+  background-color: darksalmon;
 }

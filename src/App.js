@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import styles from "./App.module.scss";
+// import styles from "./App.module.scss";
 import axios from "axios";
-import RecipeSearchForm from "./components/RecipeSearchForm/RecipeSearchForm";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensils } from "@fortawesome/free-solid-svg-icons";
-import RecipeList from "./components/RecipeList/RecipeList";
 import Router from "./routing/Router";
 
 class App extends Component {
@@ -17,6 +13,7 @@ class App extends Component {
     e.preventDefault();
 
     const recipeName = e.target.recipeName.value;
+    console.log("recipeName", recipeName);
     const recipeNumber = e.target.recipeNumber.value;
 
     axios
@@ -37,25 +34,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1 className={styles.title}>
-          {" "}
-          <span>
-            {" "}
-            <FontAwesomeIcon
-              className={styles.icon}
-              icon={faUtensils}
-            /> Cook{" "}
-          </span>{" "}
-          Book
-        </h1>
-
+      <>
         <Router
           recipes={this.state.recipes}
           baseImgUrl={this.state.baseImgUrl}
           getRecipes={this.getRecipes}
         />
-      </div>
+      </>
     );
   }
 }
