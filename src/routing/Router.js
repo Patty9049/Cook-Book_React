@@ -9,7 +9,7 @@ import SingleRecipe from "../views/SingleRecipe";
 const Router = ({ recipes, baseImgUrl, getRecipes }) => {
   return (
     <BrowserRouter>
-      <SearchAppBar />
+      <SearchAppBar getRecipes={getRecipes} />
       <Switch>
         <Route
           exact

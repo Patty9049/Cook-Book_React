@@ -1,9 +1,6 @@
 import React from "react";
-import SearchAppBar from "../components/AppBar/AppBar";
 import RecipeList from "../components/RecipeList/RecipeList";
 import axios from "axios";
-import BurgerMenu from "../components/BurgerMenu/BurgerMenu";
-
 const Home = ({ recipes, baseImgUrl, getRecipes }) => {
   getRecipes = (e) => {
     e.preventDefault();

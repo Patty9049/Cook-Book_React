@@ -5,25 +5,24 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+// import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 // import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+// import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 // import MoreIcon from "@material-ui/icons/MoreVert";
-// import RecipeSearchForm from "../RecipeSearchForm/RecipeSearchForm";
+import RecipeSearchForm from "../RecipeSearchForm/RecipeSearchForm";
 // import { SignalWifi1BarLockSharp } from "@material-ui/icons";
 // import { red } from "@material-ui/core/colors";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import Button from "@material-ui/core/Button";
 // import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
+// import FormControl from "@material-ui/core/FormControl";
+// import Select from "@material-ui/core/Select";
+// import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -70,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
+    // transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
       width: "20ch",
@@ -98,6 +97,9 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  toolbar: {
+    justifyContent: "space-evenly",
   },
 }));
 
@@ -189,134 +191,17 @@ export default function SearchAppBar({ getRecipes }) {
 
   return (
     <div className={classes.grow}>
-      <AppBar style={{ background: "#fad390" }} position="static">
-        <Toolbar style={{ background: "#fad390" }}>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton> */}
+      <AppBar
+        style={{ background: "#fad390", color: "black" }}
+        position="static"
+      >
+        <Toolbar className={classes.toolbar} style={{ background: "#fad390" }}>
           <BurgerMenu />
           <Typography variant="h6" noWrap>
             COOK-BOOK
           </Typography>
-          {/* SEARCH FIELD */}
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div> */}
-          {/* <RecipeSearchForm getRecipes={getRecipes} recipes={recipes} /> */}
-          <form className={classes.form} onSubmit={getRecipes}>
-            <div className={classes.search}>
-              {/* <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div> */}
-              <InputBase
-                type="search"
-                name="recipeName"
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-              />
-            </div>
-            {/* <input
-              type="search"
-              name="recipeName"
-              placeholder="Type your recipe name..."
-            /> */}
-            <label htmlFor="recipeNumber">Results:</label>
-            <select name="recipeNumber" id="recipeNumber">
-              <option value={10}>10</option>
-              <option value={15}>20</option>
-              <option value={20}>30</option>
-            </select>
-            {/* <FormControl
-              style={{ width: "200px" }}
-              className={classes.formControl}
-            >
-              <InputLabel
-                style={{ color: "white" }}
-                id="demo-simple-select-label"
-                htmlFor="recipeNumber"
-              >
-                RESULTS
-              </InputLabel>
-              <Select
-                name="recipeNumber"
-                labelId="demo-simple-select-label"
-                id="recipeNumber"
-                value={age}
-              >
-                <MenuItem value={10}>10</MenuItem>
-                <MenuItem value={20}>20</MenuItem>
-                <MenuItem value={30}>30</MenuItem>
-              </Select>
-            </FormControl> */}
-            {/* <select name="recipeNumber" id="recipeNumber">
-              <option value={5}>5</option>
-              <option value={15}>15</option>
-              <option value={25}>25</option>
-            </select> */}
-            <Button
-              style={{ background: "white", color: "#f8c291" }}
-              type="submit"
-              variant="contained"
-              color="primary"
-            >
-              {/* <div className={classes.searchIcon}> */}
-              <SearchIcon />
-              {/* </div> */}
-            </Button>
-          </form>
-          {/* <div className={classes.grow} /> */}
-          {/* <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div> */}
-          {/* <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div> */}
+          {/* FORMULARZ W NAVBARZE */}
+          <RecipeSearchForm getRecipes={getRecipes} />
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
