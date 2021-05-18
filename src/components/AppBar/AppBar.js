@@ -198,7 +198,7 @@ export default function SearchAppBar({ getRecipes }) {
         <Toolbar className={classes.toolbar} style={{ background: "#fad390" }}>
           <BurgerMenu />
           <Typography variant="h6" noWrap>
-            COOK-BOOK
+            COOKBOOK
           </Typography>
           {/* FORMULARZ W NAVBARZE */}
           <RecipeSearchForm getRecipes={getRecipes} />
