@@ -7,6 +7,7 @@ import Home from "../views/Home";
 import SingleRecipe from "../views/SingleRecipe";
 
 const Router = ({ recipes, baseImgUrl, getRecipes }) => {
+  console.log("baseImgUrl", baseImgUrl);
   return (
     <BrowserRouter>
       <SearchAppBar getRecipes={getRecipes} />
