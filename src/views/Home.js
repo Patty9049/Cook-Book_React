@@ -1,7 +1,13 @@
 import React from "react";
 import RecipeList from "../components/RecipeList/RecipeList";
 import axios from "axios";
-const Home = ({ recipes, baseImgUrl, getRecipes }) => {
+const Home = ({
+  recipes,
+  baseImgUrl,
+  getRecipes,
+  favRecipes,
+  addFavRecipe,
+}) => {
   getRecipes = (e) => {
     e.preventDefault();
 
@@ -29,6 +35,8 @@ const Home = ({ recipes, baseImgUrl, getRecipes }) => {
         recipes={recipes}
         baseImgUrl={baseImgUrl}
         baseImgUrl={baseImgUrl}
+        favRecipes={favRecipes}
+        addFavRecipe={addFavRecipe}
       />
     </div>
   );

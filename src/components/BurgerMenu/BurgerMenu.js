@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -8,21 +8,15 @@ import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-  },
-  paper: {
-    marginRight: theme.spacing(2),
-  },
-}));
+import { useStyles } from "./BurgerMenuStyles";
+import { Link } from "react-router-dom";
+import { routes } from "../../routes";
 
 const BurgerMenu = () => {
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -43,9 +37,8 @@ const BurgerMenu = () => {
     }
   }
 
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
@@ -55,15 +48,6 @@ const BurgerMenu = () => {
 
   return (
     <div className={classes.root}>
-      {/* <div>
-        <Paper className={classes.paper}>
-          <MenuList>
-            <MenuItem>Profile</MenuItem>
-            <MenuItem>My account</MenuItem>
-            <MenuItem>Logout</MenuItem>
-          </MenuList>
-        </Paper>
-      </div> */}
       <div>
         <IconButton
           ref={anchorRef}
@@ -77,7 +61,6 @@ const BurgerMenu = () => {
         >
           <MenuIcon />
         </IconButton>
-        {/* </Button> */}
         <Popper
           open={open}
           anchorEl={anchorRef.current}
@@ -100,13 +83,18 @@ const BurgerMenu = () => {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
+                    <Link to={routes.home}>
+                      <MenuItem onClick={handleClose}>Home</MenuItem>
+                    </Link>
                     <MenuItem onClick={handleClose}>Cousines</MenuItem>
                     <MenuItem onClick={handleClose}>Ingredients</MenuItem>
                     <MenuItem onClick={handleClose}>Diets</MenuItem>
                     <MenuItem onClick={handleClose}>Intolerance</MenuItem>
                     <MenuItem onClick={handleClose}>Meal types</MenuItem>
                     <MenuItem onClick={handleClose}>Wines</MenuItem>
-                    <MenuItem onClick={handleClose}>My favourites</MenuItem>
+                    <Link to={routes.favRecipes}>
+                      <MenuItem onClick={handleClose}>My favourites</MenuItem>
+                    </Link>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
