@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./RecipeSearchForm.module.scss";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -9,6 +9,7 @@ import Select from "@material-ui/core/Select";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import Button from "@material-ui/core/Button";
+import AppContext from "../../context";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -49,16 +50,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RecipeSearchForm = ({ getRecipes }) => {
+const RecipeSearchForm = () => {
   const classes = useStyles();
   const [quantity, setQuantity] = useState("");
+
+  const context = useContext(AppContext);
 
   const handleChange = (event) => {
     setQuantity(event.target.value);
   };
 
   return (
-    <form onSubmit={getRecipes}>
+    <form onSubmit={context.getRecipes}>
       <div className={classes.search}>
         <div className={classes.searchIcon}>{/* <SearchIcon /> */}</div>
         <InputBase

@@ -1,17 +1,12 @@
 import React from "react";
 import RecipeListItem from "../RecipeListItem/RecipeListItem";
 
-const RecipeList = ({ recipes, baseImgUrl, favRecipes, addFavRecipe }) => {
+const RecipeList = ({ recipesArray }) => {
   return (
     <ul>
-      {recipes.map((recipe) => (
+      {recipesArray.map((recipe) => (
         <li key={recipe.id}>
-          <RecipeListItem
-            recipe={recipe}
-            baseImgUrl={baseImgUrl}
-            favRecipes={favRecipes}
-            addFavRecipe={addFavRecipe}
-          />
+          <RecipeListItem recipe={recipe} />
         </li>
       ))}
     </ul>

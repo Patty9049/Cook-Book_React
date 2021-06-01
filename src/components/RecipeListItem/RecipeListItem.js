@@ -1,14 +1,14 @@
 import styles from "./RecipeListItem.module.scss";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { routes } from "../../routes";
+import AppContext from "../../context";
 
 const RecipeListItem = ({
   recipe: { title, image, servings, readyInMinutes, id },
-  baseImgUrl,
-  favRecipes,
-  addFavRecipe,
 }) => {
+  const context = useContext(AppContext);
+  const { baseImgUrl, addFavRecipe } = context;
+
   return (
     <div className={styles.mainContainer}>
       <Link

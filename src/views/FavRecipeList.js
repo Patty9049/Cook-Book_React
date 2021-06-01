@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import RecipeList from "../components/RecipeList/RecipeList";
+import AppContext from "../context";
 
-const FavRecipeList = ({ favRecipes }) => {
-  console.log("FAVFAV", favRecipes);
+const FavRecipeList = () => {
+  const context = useContext(AppContext);
   return (
     <div>
       <h1>FavRecipe</h1>
-      <ul>
-        {favRecipes.map((fav) => (
-          <li key={fav.id}>
-            <h1>{fav.title}</h1>
-          </li>
-        ))}
-      </ul>
+      <RecipeList recipesArray={context.favRecipes} />
     </div>
   );
 };
