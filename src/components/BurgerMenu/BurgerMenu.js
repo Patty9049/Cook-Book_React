@@ -62,6 +62,7 @@ const BurgerMenu = () => {
           <MenuIcon />
         </IconButton>
         <Popper
+          style={{ zIndex: 4 }}
           open={open}
           anchorEl={anchorRef.current}
           role={undefined}

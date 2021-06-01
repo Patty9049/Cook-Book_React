@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Router from "./routing/Router";
+import { setFavRecipesToLocalStorage } from "./utils/localStorageSetter";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -27,9 +28,16 @@ const App = () => {
     e.target.reset();
   };
 
-  // useEffect(() => {
-  //   addFavRecipe();
-  // }, [favRecipes]);
+  useEffect(
+    (favRecipes) => {
+      setFavRecipesToLocalStorage(favRecipes);
+    },
+    [favRecipes]
+  );
+
+  // const setFavRecipesToLocalStorage = () => {
+  //   localStorage.setItem("favRecipes", JSON.stringify(favRecipes));
+  // };
 
   const addFavRecipe = (title, image, servings, readyInMinutes, id) => {
     // e.preventDefault();
